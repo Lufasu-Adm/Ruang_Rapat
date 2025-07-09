@@ -1,61 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📅 Sistem Peminjaman Ruang Rapat PT PAL
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi ini merupakan sistem manajemen peminjaman ruang rapat berbasis web yang dikembangkan dengan Laravel. Sistem mendukung multi-role (User, Admin, dan Super Admin) serta terintegrasi dengan manajemen divisi dan data ruangan.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- ✅ **Autentikasi dan Role**
+  - Role: `user`, `admin`, `super admin`
+  - Setiap role memiliki tampilan dan hak akses berbeda
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- ✅ **Manajemen Ruangan**
+  - Tambah, edit, dan hapus ruangan (khusus admin dan super admin)
+  - Setiap ruangan terhubung dengan satu divisi
 
-## Learning Laravel
+- ✅ **Peminjaman Ruangan**
+  - Formulir peminjaman dengan input waktu, tanggal, dan keperluan
+  - Riwayat peminjaman per user
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- ✅ **Dashboard Kustom**
+  - Tampilan berbeda untuk user, admin, dan super admin
+  - Jam analog dekoratif dan info hari/tanggal
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- ✅ **Manajemen Divisi (Super Admin)**
+  - Tambah divisi beserta admin dan user-nya secara otomatis
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🏗️ Struktur Proyek
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```
+├── app/
+│   └── Http/
+│       └── Controllers/
+│           ├── AuthController.php
+│           ├── BookingController.php
+│           ├── RoomController.php
+│           └── SuperAdminController.php
+├── resources/
+│   ├── views/
+│   │   ├── bookings/
+│   │   ├── admin/
+│   │   └── superadmin/
+│   └── css/
+│       ├── app.css
+│       ├── admin.css
+│       └── superadmin.css
+├── database/
+│   ├── migrations/
+│   └── seeders/
+```
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## ⚙️ Cara Instalasi
 
-## Contributing
+1. Clone repository
+   ```bash
+   git clone https://github.com/Lufasu-Adm/Ruang_Rapat.git
+   cd Ruang_Rapat
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. Install dependency Laravel dan frontend
+   ```bash
+   composer install
+   npm install && npm run dev
+   ```
 
-## Code of Conduct
+3. Salin file konfigurasi `.env`
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. Buat database dan sesuaikan `.env`
 
-## Security Vulnerabilities
+5. Jalankan migrasi dan seeder dummy
+   ```bash
+   php artisan migrate --seed
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. Jalankan server lokal
+   ```bash
+   php artisan serve
+   ```
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🧪 Akun Dummy (Seeder)
+
+| Role         | Email                                  | Password  |
+|--------------|----------------------------------------|-----------|
+| Super Admin  | superadmin@example.com                 | password  |
+| Admin Divisi | admin_divisi_akuntansi.example.com     | password  |
+| User Divisi  | user_divisi_akuntansi.example.com      | password  |
+
+---
+
+## 🛠️ Teknologi
+
+- Laravel 10
+- Blade Template
+- PHP 8+
+- MySQL/PostgreSQL
+- CSS murni (tanpa framework)
+- Git & GitHub
+
+---
+
+## 👨‍💻 Tentang Pengembang
+
+> Proyek ini dibuat oleh **Jordan dan Kelompok KP** untuk kebutuhan **Kerja Praktik di PT PAL Indonesia**  
+> Tahun: **2025**  
+> Tujuan: Efisiensi dan digitalisasi peminjaman ruang rapat antar-divisi.
+
+---
+
+## 📄 Lisensi
+
+Repositori ini hanya untuk keperluan edukasi dan penggunaan internal PT PAL. Tidak untuk didistribusikan tanpa izin.
