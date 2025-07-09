@@ -1,4 +1,4 @@
-# 📅 Sistem Peminjaman Ruang Rapat PT PAL
+# 📅 Sistem Peminjaman Ruang Rapat
 
 Aplikasi ini merupakan sistem manajemen peminjaman ruang rapat berbasis web yang dikembangkan dengan Laravel. Sistem mendukung multi-role (User, Admin, dan Super Admin) serta terintegrasi dengan manajemen divisi dan data ruangan.
 
